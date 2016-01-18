@@ -1,0 +1,176 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: "segoe ui", "trebuchet MS", "Lucida Sans Unicode", "Lucida Sans", Sans-Serif;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  color: #333;
+  background-color: #fafafa;
+
+  line-height: 150%;
+}
+
+a {
+  color: #80a050;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #94bf68;
+}
+
+#wrapper {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#header {
+  width: 100%;
+  background-color: #97cf5d;
+  margin: 0;
+  padding: 0 10%;
+  font-size: large;
+}
+
+#header h1 {
+  font-size: large;
+  text-align: left;
+
+  padding: 0;
+  margin: 0;
+
+  line-height: 150%;
+}
+
+#header a {
+  color: #333;
+  float: right;
+  line-height: 150%;
+  padding: 0 0.7em;
+  border-left: 1px solid grey;
+  text-decoration: none;
+}
+
+#header a:first-child {
+  border-right: 1px solid grey;
+}
+
+#header a:hover {
+  background-color: #a7df6d;
+}
+
+#header a:visited {
+  color: inherit;
+}
+
+#header span {
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+}
+
+textarea {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 8px 12px;
+  width: 100%;
+  height: 15em;
+  font-family: "Robot Mono", Consolas, monaco, monospace;
+}
+
+form input[type="text"], form select {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: large;
+  padding: 3px 4px;
+  width: 45%;
+}
+
+select {
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  font-size: large;
+  padding: 3px 4px;
+}
+
+input[type="submit"] {
+  font-size: xx-large;
+}
+
+#paste-index {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#paste-index th {
+  margin: 0;
+  padding: 0;
+}
+
+#paste-index td {
+  text-align: center;
+  margin: 0;
+  padding: 0.2em 0.1em;
+  border-top: 1px solid #ddd;
+}
+
+#paste-index td:first-child {
+  width: 60%;
+  text-align: left;
+  border-left: none;
+}
+
+form p {
+  margin: 0.5em 0;
+}
+
+.grp-hilight {
+  font-family: "Robot Mono", Consolas, monaco, monospace;
+  line-height: normal;
+}
+
+.grp-hilight table {
+  width: 100%;
+  margin: 0;
+  padding: 0.3em;
+  border-collapse: collapse;
+}
+
+.grp-hilight tr {
+  border: none;
+}
+
+.grp-hilight td {
+  border: none;
+  vertical-align: text-bottom;
+}
+
+.grp-hilight .line-numbers {
+  text-align: right;
+  padding: 0 0.3em;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.grp-hilight .code {
+  width: 100%;
+  padding-left: 0.2em;
+}
+
+.grp-hilight pre {
+  padding: 0;
+  margin: 0;
+  white-space: pre-wrap;
+  font: inherit;
+}

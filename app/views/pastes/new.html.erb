@@ -1,0 +1,10 @@
+<% @title = "Create New Paste" %>
+<p>Create a new paste by specifying the text below, as well as an optional title and source language.</p>
+<%= form_for :paste, url: {action: "create"} do |f| %>
+    <%= f.text_area :text, placeholder: "Paste Content" %>
+    <p>
+      <%= f.text_field :title, placeholder: "Paste Title" %>
+      <%= f.select :language_id, [["Plain Text", "plain"]] + Grp::Application::languages.map { |id, name| [name, id] } %>
+    </p>
+    <%= f.submit value: "Paste" %>
+<% end %>

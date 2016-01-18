@@ -1,0 +1,38 @@
+<% @title = "About GRP" %>
+<p>
+  This is <b>GRP</b> - GtkSourceView + Ruby Pastebin.
+  I'm building this project in the hopes of familiarizing myself with Ruby and with Rails, in advance of a co-op placement at
+  <a href="https://www.shopify.ca/">Shopify</a>.
+</p>
+<p>
+  I'm a big fan of the GNOME text editor, <a href="https://wiki.gnome.org/Apps/Gedit">gedit</a>.
+  I've used gedit for the vast majority of my programming- and typesetting-related
+  work for the past 3 years or so. gedit is built upon a powerful GTK+ widget,
+  <a href="https://wiki.gnome.org/Projects/GtkSourceView">GtkSourceView</a>, which enables syntax-highlighted
+  display and editing of source code. GtkSourceView defines XML-based formats for language and style definitions,
+  making it versatile and extensible.
+</p>
+<p>
+  My goal in building GRP is to create
+  a <a href="http://pastebin.com/">Pastebin</a> workalike - a quick tool for sharing small pieces of code - that makes use of the existing
+  infrastructure provided by and created for GtkSourceView. This includes a compiler capable of translating GtkSourceView styles into CSS,
+  and a syntax highlighting engine capable of parsing GtkSourceView languages and rendering HTML.
+</p>
+<p>
+  Recent pastes are indexed below. New pastes can be authored <a href="/pastes/new">here</a>.
+  The source code for the this project is available on GitHub, <a href="http://xkcd.com">here</a>.
+</p>
+<table id="paste-index">
+<tr>
+  <th>Paste Title</th>
+  <th>Paste Language</th>
+  <th>Time</th>
+</tr>
+<% for @paste in @pastes %>
+  <tr>
+    <td><%= link_to @paste.title, "/pastes/#{@paste.id}" %></a></td>
+    <td><%= Grp::Application.languages[@paste.language_id] %></td>
+    <td><%= @paste.created_at.strftime("%d/%m/%Y %H:%M") %></td>
+  </tr>
+<% end %>
+</table>

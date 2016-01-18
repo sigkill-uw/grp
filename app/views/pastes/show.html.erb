@@ -1,0 +1,50 @@
+<% @title = "Viewing Paste: #{@paste.title}" %>
+<% lines = @paste.text.split("\n") %>
+<% active_style = (cookies[:active_style].nil?) ? "classic" : cookies[:active_style] %>
+
+<% content_for :for_head do %>
+  <script src="/js.cookie.js"></script>
+  <script src="/style_selector.js"></script>
+  <% Grp::Application.styles.each { |id, style| %>
+    <link rel="<%= (id == active_style) ? "" : "alternate " %>stylesheet"
+      type="text/css" href="/styles/<%= id %>.css" class="grp-stylesheet" name="<%= id %>">
+  <% } %>
+<% end %>
+
+<p>
+  Paste was authored on <%= @paste.created_at.strftime("%d/%m/%Y, %H:%M") %>.
+  Raw version available <%= link_to "here", "/pastes/#{@paste.id}.raw" %>.
+</p>
+<p>
+  Display with GtkSourceView theme:
+  <select id="style-selector">
+  <% Grp::Application.styles.each { |id, style| %>
+    <option value="<%= id %>" <%= (active_style == id) ? "selected" : "" %>><%= style.name %></option>
+  <% } %>
+  </select>
+</p>
+<div class="grp-hilight">
+  <table>
+    <% lines.each_with_index { |line, index| %>
+      <tr class="text">
+        <td class="line-numbers"><%= index + 1 %></td>
+        <td class="code text"><pre><%= line %></pre></td>
+      </tr>
+    <% } %>
+  </table>
+<!--    <ol class="text">
+      <% lines.each { |line| %>
+        <li><%= line %></li>
+      <% } %>
+    </ol>-->
+<!--  <div class="line-numbers">
+    <% (1..lines.length).each { |n| %>
+      <p><%= n %></p>
+    <% } %>
+  </div>
+  <div class="text">
+      <% lines.each { |line| %>
+        <p><%= line %></p>
+      <% } %>
+  </div>-->
+</div>
