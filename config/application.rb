@@ -36,6 +36,11 @@ module Grp
     Dir.chdir(Rails.root.join("app/assets/styles")) { |cwd|
       (@@styles, messages) = StyleCompiler.compile(Dir.entries(".").find_all { |filename| filename.ends_with?(".xml") })
 
+      @@styles.each { |id, style|
+        style.special_rules["pre::selection"] = style.rules["selection"] unless style.rules["selection"].nil?
+        style.special_rules["pre::-moz-selection"] = style.rules["selection"] unless style.rules["selection"].nil?
+      }
+
       messages.each { |msg| startup_logger.info(msg) }
     }
 

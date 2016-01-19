@@ -29,16 +29,12 @@ module LanguageCompiler
         # This call throws SyntaxError
         document = Nokogiri::XML(File.open(filename, "r")) { |config| config.strict }
 
-        if(document.root["version"] != "2.0")
-          messages << "#{filename} is not a version 2.0 GtkSourceView language file; not compiling"
-        else
-          # Validate the document against the schema and throw the resultant error if required
-          validation_errors = (!@@schema.nil?) ? @@schema.validate(document) : []
-          raise validation_errors[0] if(!validation_errors.empty?)
+        # Validate the document against the schema and throw the resultant error if required
+        validation_errors = (!@@schema.nil?) ? @@schema.validate(document) : []
+        raise validation_errors[0] if(!validation_errors.empty?)
 
-          languages[document.root["id"]] = ((!document.root["name"].nil?) ?
-            document.root["name"] : document.root["_name"])
-        end
+        languages[document.root["id"]] = ((!document.root["name"].nil?) ?
+          document.root["name"] : document.root["_name"])
 
       # These rescue blocks pretty much eat the errors, but whatever.
       # This module is basically a holistic solution rather than a random library function.

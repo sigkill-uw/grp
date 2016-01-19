@@ -3,8 +3,10 @@
 <% active_style = (cookies[:active_style].nil?) ? "classic" : cookies[:active_style] %>
 
 <% content_for :for_head do %>
+  <script src="/jquery.min.js"></script>
   <script src="/js.cookie.js"></script>
   <script src="/style_selector.js"></script>
+  <script src="/current_line.js"></script>
   <% Grp::Application.styles.each { |id, style| %>
     <link rel="<%= (id == active_style) ? "" : "alternate " %>stylesheet"
       type="text/css" href="/styles/<%= id %>.css" class="grp-stylesheet" name="<%= id %>">
@@ -24,9 +26,9 @@
   </select>
 </p>
 <div class="grp-hilight">
-  <table>
+  <table id="paste-content">
     <% lines.each_with_index { |line, index| %>
-      <tr class="text">
+      <tr class="text" line-index="<%= index %>">
         <td class="line-numbers"><%= index + 1 %></td>
         <td class="code text"><pre><%= line %></pre></td>
       </tr>
